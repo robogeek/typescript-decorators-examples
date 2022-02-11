@@ -6,9 +6,19 @@ export function LogClassInspector(constructor: Function) {
 }
 
 export function ClassInspector(constructor: Function) {
-    return {
+    const ret = {
         constructor,
+        extensible: Object.isExtensible(constructor),
+        frozen: Object.isFrozen(constructor),
+        sealed: Object.isSealed(constructor),
+        values: Object.values(constructor),
+        properties: Object.getOwnPropertyDescriptors(constructor),
         ownKeys: Reflect.ownKeys(constructor),
+        prototypeKeys: Reflect.ownKeys(constructor.prototype),
+        prototypeMembers: {}
     };
+    for (const key of Reflect.ownKeys(constructor.prototype)) {
+        ret.prototypeMembers[key] = constructor.prototype[key];
+    }
+    return ret;
 }
-

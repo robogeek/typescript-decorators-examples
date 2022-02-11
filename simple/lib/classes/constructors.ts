@@ -9,13 +9,13 @@ function logConstructor(constructor: Function) {
 function withParam(path: string) {
     console.log(`outer withParam ${path}`);
     return (target: Function) => {
-        console.log(`inner withParam`);
-        logConstructor(target);
+        console.log(`inner withParam ${path}`);
     };
 }
 
-@inspectors.LogClassInspector
-@withParam('foo')
+@withParam('first')
+@withParam('middle')
+@withParam('last')
 class ExampleClass {
     constructor(x: number, y: number) {
         console.log(`ExampleClass(${x}, ${y})`);
