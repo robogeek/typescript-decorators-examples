@@ -1,4 +1,6 @@
 
+import * as inspectors from 'decorator-inspectors';
+
 function sealed(constructor: Function) {
     Object.seal(constructor);
     Object.seal(constructor.prototype);
@@ -22,8 +24,9 @@ export function logConstructor(constructor: Function) {
 }
 
 
-@logConstructor
+// @logConstructor
 // @sealed
+@inspectors.LogClassInspector
 class ClassDecoratorExample {
     constructor(x: number, y: number) {
         console.log(`ClassDecoratorExample(${x}, ${y})`);
