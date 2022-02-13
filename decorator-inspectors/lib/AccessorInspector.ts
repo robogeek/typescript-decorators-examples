@@ -29,25 +29,28 @@ export function AccessorInspector(target: any,
     };
 }
 
-export function AccessorSpy<T>(target: any,
+
+export function AccessorSpy<T>() {
+    return function (target: Object,
     propertyKey: string,
     descriptor: PropertyDescriptor) {
 
-    const originals = {
-        get: descriptor.get,
-        set: descriptor.set
-    };
-    if (originals.get) {
-        descriptor.get = () => {
-            const ret = originals.get();
-            console.log(`get ${String(propertyKey)}`, ret);
-            return ret;
+        const originals = {
+            get: descriptor.get,
+            set: descriptor.set
         };
-    }
-    if (originals.set) {
-        descriptor.set = (newval: T) => {
-            console.log(`set ${String(propertyKey)}`, newval);
-            originals.set(newval);
-        };
+        if (originals.get) {
+            descriptor.get = function (): T {
+                const ret: T = originals.get.call(this);
+                console.log(`AccessorSpy get ${String(propertyKey)}`, ret);
+                return ret;
+            };
+        }
+        if (originals.set) {
+            descriptor.set = function(newval: T) {
+                console.log(`AccessorSpy set ${String(propertyKey)}`, newval);
+                originals.set.call(this, newval);
+            };
+        }
     }
 }
