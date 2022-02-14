@@ -1,5 +1,7 @@
 The `decorator-inspectors` package contain TypeScript decorators which let you print out detailed information about decorated objects.  These decorators were developed in conjunction with writing an article series, [Deep introduction to TypeScript decorators, metadata, and runtime data validation with decorators](https://techsparx.com/nodejs/typescript/decorators/introduction.html), which is a deep look into using and implementing TypeScript decorators.
 
+The primary use for this package is when developing decorators.  The inspectors help you to see the data you can get ahold of via the decorators.
+
 # INSTALLATION
 
 To install this package: `npm install decorator-inspectors --save` (or the `yarn` equivalent)
@@ -12,7 +14,7 @@ To use this package in your application:
 import * as inspectors from 'decorator-inspectors';
 ```
 
-You then use the decorators as `@inspectors.DecoratorName()`.
+You then use the decorators as `@inspectors.DecoratorName`.
 
 To see examples visit the repository at https://github.com/robogeek/typescript-decorators-examples
 

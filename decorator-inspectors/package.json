@@ -1,18 +1,22 @@
 {
   "name": "decorator-inspectors",
   "version": "1.0.0",
-  "description": "",
+  "description": "Inspect data about decorated objects",
   "main": "./dist/index.js",
   "exports": {
     ".": "./dist/index.js"
   },
+  "types": "./dist/index.d.ts",
   "type": "commonjs",
   "scripts": {
     "build": "npx tsc",
-    "watch": "npx tsc -w"
+    "watch": "npx tsc -w",
+    "dopublish": "npm publish --access public"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "typescript", "decorator", "decorators"
+  ],
+  "author": "David Herron <david@davidherron.com>",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^17.0.15",
