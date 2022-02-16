@@ -1,6 +1,6 @@
 {
   "name": "decorator-inspectors",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Inspect data about decorated objects",
   "homepage": "https://github.com/robogeek/typescript-decorators-examples/tree/main/decorator-inspectors",
   "repository": {
