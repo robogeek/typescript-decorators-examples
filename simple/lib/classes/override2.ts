@@ -31,7 +31,7 @@ class Circle {
         this.diameter = diameter;
     }
 
-    area() { return (this.diameter / 2) * (Math.PI ** 2); }
+    area() { return ((this.diameter / 2) ** 2) * (Math.PI); }
 }
 
 const rect1 = new Rectangle(3, 5);

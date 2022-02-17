@@ -1,7 +1,6 @@
 
 function Validate<T>(validator: Function) {
-    return (target: any,
-        propertyKey: string,
+    return (target: Object, propertyKey: string,
         descriptor: PropertyDescriptor) => {
         
         const originals = {
@@ -13,7 +12,7 @@ function Validate<T>(validator: Function) {
                 console.log(`Validate set ${String(propertyKey)}`, newval);
                 if (validator) {
                     if (!validator(newval)) {
-                        throw new Error(`Invalid value ${newval}`);
+                        throw new Error(`Invalid value for ${propertyKey} -- ${newval}`);
                     }
                 }
                 originals.set.call(this, newval);
@@ -28,11 +27,14 @@ class CarSeen {
     #speed: number;
 
     @Validate<number>((speed: number) => {
+        console.log(`Validate speed ${speed}`);
         if (typeof speed !== 'number') return false;
         if (speed < 10 || speed > 65) return false;
         return true;
     })
-    set speed(speed) { this.#speed = speed; }
+    set speed(speed) {
+        console.log(`set speed ${speed}`);
+        this.#speed = speed; }
     get speed() { return this.#speed; }
 
 }

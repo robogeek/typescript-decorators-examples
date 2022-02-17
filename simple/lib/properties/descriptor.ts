@@ -15,4 +15,10 @@ class Student {
 
     @GetDescriptor()
     year: number;
+
 }
+
+const stud1 = new Student();
+console.log(Object.getOwnPropertyDescriptor(stud1, 'year'));
+stud1.year = 2022;
+console.log(Object.getOwnPropertyDescriptor(stud1, 'year'));

@@ -22,8 +22,11 @@ class ParameterExample {
 
     member(
         @inspectors.LogParameterInspector
+        // @logParameter
         x: number,
+
         @inspectors.LogParameterInspector
+        // @logParameter
         y: number) {
         console.log(`member ${x} ${y}`);
     }
