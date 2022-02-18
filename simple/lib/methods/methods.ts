@@ -7,7 +7,11 @@ function logMethod(target: Object, propertyKey: string,
     console.log(`logMethod`, {
         target, propertyKey, descriptor, 
         targetKeys: Object.getOwnPropertyNames(target),
-        funcion: descriptor.value,
+        targetKeys2: Object.keys(target),
+        targetDescriptors: Object.getOwnPropertyDescriptors(target),
+        clazz: Object.getOwnPropertyDescriptor(target, 'constructor'),
+        clazzValue: Object.getOwnPropertyDescriptor(target, 'constructor').value,
+        function: descriptor.value,
         funcText: descriptor.value.toString()
     });
 }
