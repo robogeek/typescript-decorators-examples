@@ -1,16 +1,14 @@
 import 'reflect-metadata';
 import * as util from 'util';
 
-export function LogMethodInspector(target: any, 
-    propertyKey: string, 
-    descriptor: PropertyDescriptor) {
+export function LogMethodInspector(target: Object, 
+    propertyKey: string, descriptor: PropertyDescriptor) {
     
     console.log(MethodInspector(target, propertyKey, descriptor));
 }
 
-export function MethodInspector(target: any, 
-    propertyKey: string, 
-    descriptor: PropertyDescriptor) {
+export function MethodInspector(target: Object, 
+    propertyKey: string, descriptor: PropertyDescriptor) {
     
     return {
         target, propertyKey, descriptor,

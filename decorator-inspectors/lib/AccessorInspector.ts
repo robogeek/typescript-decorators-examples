@@ -29,7 +29,6 @@ export function AccessorInspector(target: any,
     };
 }
 
-
 export function AccessorSpy<T>() {
     return function (target: Object,
     propertyKey: string,
