@@ -6,6 +6,7 @@ export function LogParameterInspector(target: Object,
     propertyKey: string | symbol,
     parameterIndex: number) {
 
+    console.log(`LogParameterInspector ${target} ${String(propertyKey)} ${parameterIndex}`);
     console.log(ParameterInspector(target, propertyKey, parameterIndex));
 }
 
@@ -30,10 +31,18 @@ export function ParameterInspector(target: Object,
         }
     };
     for (const key of Object.getOwnPropertyNames(target)) {
-        ret.members[key] = {
-            obj: target[key],
-            descriptor: util.inspect(Object.getOwnPropertyDescriptor(target, key))
-        };
+        console.log(`ParameterInspector target ${target} key ${key}`);
+        try {
+            ret.members[key] = {
+                obj: target[key],
+                descriptor: util.inspect(Object.getOwnPropertyDescriptor(target, key))
+            };
+        } catch (e) {
+            ret.members[key] = {
+                error: `ParameterInspector could not get data for ${key}`,
+                message: e.message
+            }
+        }
         /* if (typeof target[key] === 'function') {
             ret.members[key] = functionData(target[key]);
         } else {

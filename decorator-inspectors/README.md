@@ -18,7 +18,64 @@ You then use the decorators as `@inspectors.DecoratorName`.
 
 To see examples visit the repository at https://github.com/robogeek/typescript-decorators-examples
 
-# API
+# API: Functions
+
+The `decorator-inspectors` package provides five functions which can be used inside a hybrid decorator to determine the context it is being used in.  It is observed that based on the types for the decorator parameters, one can determine the sort of object to which the decorator has been attached.  This makes it possible to create a hybrid decorator which can be attached to any object.
+
+The method signature for the hybrid decorator function is:
+
+```ts
+(target: Object,
+    propertyKey?: string | symbol,
+    descriptor?: number | PropertyDescriptor)
+```
+
+This signature handles every variant of parameters for decorator functions.
+
+There is an example of using these functions in the repository, in the `simple/lib/hybrid` directory.
+
+```ts
+isClassDecorator(target: Object,
+    propertyKey?: string | symbol,
+    descriptor?: number | PropertyDescriptor);
+```
+
+Type Guard that detects whether the decorator is attached to a class definition.
+
+```ts
+isPropertyDecorator(target: Object,
+    propertyKey?: string | symbol,
+    descriptor?: number | PropertyDescriptor);
+```
+
+Type Guard that detects whether the decorator is attached to a property definition.
+
+```ts
+isParameterDecorator(target: Object,
+    propertyKey?: string | symbol,
+    descriptor?: number | PropertyDescriptor);
+```
+
+Type Guard that detects whether the decorator is attached to a method parameter.
+
+```ts
+isMethodDecorator(target: Object,
+    propertyKey?: string | symbol,
+    descriptor?: number | PropertyDescriptor);
+```
+
+Type Guard that detects whether the decorator is attached to a method definition.
+
+```ts
+isAccessorDecorator(target: Object,
+    propertyKey?: string | symbol,
+    descriptor?: number | PropertyDescriptor);
+```
+
+Type Guard that detects whether the decorator is attached to a accessor definition.
+
+
+# API: Decorators
 
 ```js
 @inspectors.LogClassInspector

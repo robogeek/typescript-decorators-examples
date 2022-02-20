@@ -18,7 +18,7 @@
   "dependencies": {
     "decorator-inspectors": "file:../decorator-inspectors",
     "reflect-metadata": "^0.1.13",
-    "runtime-validators": "file:../runtime-validators",
+    "runtime-data-validation": "file:../../runtime-data-validation-typescript",
     "uuid": "^8.3.2"
   }
 }

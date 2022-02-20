@@ -4,6 +4,7 @@ import * as util from 'util';
 export function LogMethodInspector(target: Object, 
     propertyKey: string, descriptor: PropertyDescriptor) {
     
+    console.log(`LogMethodInspector ${target} ${propertyKey}`, descriptor);
     console.log(MethodInspector(target, propertyKey, descriptor));
 }
 
